@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>예십추크 콘스탄틴 — Portfolio (Prototype)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<style>
+:root{
+  --bg:#faf8ff; --surface:#ffffff; --soft:#f1ecff;
+  --fg:#16131f; --muted:#6c6680; --line:#e6e0f5;
+  --lavender:#b9a7f5; --violet:#7c4dff; --sky:#7cc6ff; --black:#16131f;
+  --grad:linear-gradient(135deg,#b9a7f5 0%,#7cc6ff 100%);
+  --r:24px; --shadow:0 10px 30px -12px rgba(76,48,160,.18);
+  --gutter:clamp(16px,4vw,48px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f0d16; --surface:#1a1724; --soft:#221d33; --fg:#efeaff; --muted:#a39cbb; --line:#2d2840;
+  --violet:#a487ff; --shadow:0 10px 30px -12px rgba(0,0,0,.6);}}
+:root[data-theme="dark"]{
+  --bg:#0f0d16; --surface:#1a1724; --soft:#221d33; --fg:#efeaff; --muted:#a39cbb; --line:#2d2840;
+  --violet:#a487ff; --shadow:0 10px 30px -12px rgba(0,0,0,.6);}
+
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Pretendard Variable",Pretendard,system-ui,sans-serif;
+  line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none} h1,h2,h3,p{margin:0} ul{list-style:none;margin:0;padding:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 var(--gutter)}
+
+/* proto banner */
+.proto{background:var(--black);color:#fff;text-align:center;font-size:13px;padding:8px 16px}
+:root[data-theme="dark"] .proto{background:var(--violet)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 75%,transparent);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.logo{font-weight:700;display:flex;align-items:center;gap:10px}
+.logo i{width:30px;height:30px;border-radius:10px;background:var(--grad);display:grid;place-items:center;color:#fff;font-style:normal;font-size:14px}
+.links{display:flex;gap:24px;font-size:15px;color:var(--muted)} .links a:hover{color:var(--violet)}
+.tools{display:flex;gap:8px;align-items:center}
+.lang{display:flex;background:var(--soft);border-radius:999px;padding:3px}
+.lang button{border:0;background:none;color:var(--muted);font:inherit;font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;cursor:pointer}
+.lang button.on{background:var(--surface);color:var(--violet);box-shadow:0 2px 8px -2px rgba(0,0,0,.15)}
+.theme{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);cursor:pointer;font-size:16px}
+
+/* hero */
+.hero{padding:clamp(48px,9vh,110px) 0 clamp(56px,10vh,120px);position:relative}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;z-index:-1}
+.b1{width:420px;height:420px;background:var(--lavender);top:-60px;right:-80px}
+.b2{width:320px;height:320px;background:var(--sky);bottom:-40px;left:-100px;opacity:.4}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+.hi{color:var(--muted);font-size:18px;margin-bottom:8px}
+.name{font-size:clamp(38px,6vw,68px);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.word{display:inline-block;margin-top:14px;font-size:clamp(20px,2.6vw,28px);font-weight:700;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.desc{margin-top:18px;font-size:18px;color:var(--muted);max-width:34ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:500}
+.ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:999px;font-weight:600;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.main{background:var(--black);color:#fff;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .btn.main{background:var(--violet)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.main{background:var(--violet)}}
+.btn.ghost{background:var(--surface);border:1px solid var(--line)}
+.photo{aspect-ratio:4/5;border-radius:32px;background:var(--grad);position:relative;overflow:hidden;box-shadow:var(--shadow);
+  display:grid;place-items:center;color:#fff}
+.photo::before{content:"";position:absolute;width:55%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.25);top:18%}
+.photo::after{content:"";position:absolute;width:85%;height:40%;border-radius:50% 50% 0 0;background:rgba(255,255,255,.25);bottom:-6%}
+.photo span{position:absolute;bottom:16px;left:16px;font-size:12px;background:rgba(0,0,0,.35);padding:4px 10px;border-radius:999px}
+
+/* sections */
+section.s{padding:clamp(64px,11vh,120px) 0}
+.kicker{font-size:14px;font-weight:700;color:var(--violet);letter-spacing:.04em}
+.title{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-.025em;margin-top:6px}
+.sub{color:var(--muted);margin-top:10px;max-width:56ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;box-shadow:var(--shadow)}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;margin-top:40px}
+.story p+p{margin-top:14px} .story p{font-size:17px}
+.why{background:var(--grad);color:#16131f;border:0}
+.why h3{font-size:15px;opacity:.75} .why p{font-size:19px;font-weight:600;margin-top:10px}
+.strengths{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
+.st .ico{width:48px;height:48px;border-radius:16px;background:var(--soft);display:grid;place-items:center;font-size:22px;margin-bottom:16px}
+.st h3{font-size:20px} .st p{color:var(--muted);margin-top:8px}
+.st.empty{border-style:dashed;box-shadow:none;background:transparent;display:grid;place-items:center;text-align:center;color:var(--muted)}
+
+/* experience */
+.exp{display:grid;gap:24px;margin-top:40px}
+.case{display:grid;grid-template-columns:300px 1fr;gap:28px;padding:20px}
+.thumb{border-radius:18px;background:var(--soft);min-height:220px;position:relative;overflow:hidden}
+.thumb::before{content:"";position:absolute;inset:18%;border-radius:14px;background:var(--grad);opacity:.6;transform:rotate(-6deg)}
+.thumb span{position:absolute;bottom:12px;left:12px;font-size:12px;background:var(--surface);padding:3px 10px;border-radius:999px;color:var(--muted)}
+.meta{font-size:14px;color:var(--muted)} .case h3{font-size:24px;margin:4px 0 6px}
+.roles{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.role{background:var(--soft);color:var(--violet);font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
+.flow div{background:var(--bg);border-radius:14px;padding:14px;font-size:14px}
+.flow b{display:block;font-size:12px;color:var(--violet);margin-bottom:4px}
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.edu h3{font-size:19px;margin-top:4px}
+
+/* skills */
+.skills-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;margin-top:40px}
+.lng+.lng{margin-top:22px}
+.lng-top{display:flex;justify-content:space-between;font-weight:600}
+.lng-top span{color:var(--muted);font-weight:500;font-size:14px}
+.bar{height:10px;border-radius:999px;background:var(--soft);margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:inherit;background:var(--grad);width:0;transition:width 1.2s cubic-bezier(.2,.7,.1,1)}
+.goal{margin-top:6px;font-size:13px;color:var(--violet);font-weight:600}
+.note{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+.sk{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.sk li{padding:10px 16px;border-radius:14px;background:var(--soft);font-weight:500}
+
+/* contact */
+.contact{text-align:center;background:var(--black);color:#fff;border-radius:36px;padding:clamp(48px,8vw,88px) 24px;position:relative;overflow:hidden}
+.contact .blob{z-index:0} .contact > *{position:relative}
+.contact .title{color:#fff} .contact .sub{color:#c9c2e0;margin:12px auto 0}
+.contact .btn{background:#fff;color:#16131f;margin-top:28px}
+.loc{margin-top:16px;color:#a39cbb;font-size:14px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:40px 0}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s} .rv.in{opacity:1;transform:none}
+
+@media (max-width:860px){
+  .links{display:none}
+  .hero .wrap,.about-grid,.skills-grid,.case,.edu{grid-template-columns:1fr}
+  .photo{max-width:320px;order:-1}
+  .strengths,.flow{grid-template-columns:1fr}
+  .thumb{min-height:180px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+<script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<div class="proto" data-i="proto"></div>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top"><i>K</i><span data-i="logo"></span></a>
+  <nav class="links">
+    <a href="#about" data-i="nav.about"></a><a href="#exp" data-i="nav.exp"></a>
+    <a href="#skills" data-i="nav.skills"></a><a href="#contact" data-i="nav.contact"></a>
+  </nav>
+  <div class="tools">
+    <div class="lang"><button data-l="ko">KO</button><button data-l="ru">RU</button><button data-l="en">EN</button></div>
+    <button class="theme" aria-label="theme">◐</button>
+  </div>
+</div></header>
+
+<main id="top">
+<section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap">
+    <div>
+      <p class="hi rv" data-i="hero.hi"></p>
+      <h1 class="name rv" data-i="hero.name"></h1>
+      <span class="word rv" data-i="hero.word"></span>
+      <p class="desc rv" data-i="hero.desc"></p>
+      <div class="chips rv">
+        <span class="chip" data-i="chip.kz"></span><span class="chip" data-i="chip.loc"></span>
+        <span class="chip" data-i="chip.major"></span><span class="chip" data-i="chip.topik"></span>
+      </div>
+      <div class="ctas rv">
+        <a class="btn main" href="#exp" data-i="cta.exp"></a>
+        <a class="btn ghost" href="#contact" data-i="cta.contact"></a>
+      </div>
+    </div>
+    <div class="photo rv"><span data-i="ph.photo"></span></div>
+  </div>
+</section>
+
+<section class="s" id="about"><div class="wrap">
+  <p class="kicker rv">ABOUT</p>
+  <h2 class="title rv" data-i="about.title"></h2>
+  <div class="about-grid">
+    <div class="card story rv"><p data-i="about.p1"></p><p data-i="about.p2"></p></div>
+    <div class="card why rv"><h3 data-i="why.h"></h3><p data-i="why.p"></p></div>
+  </div>
+  <div class="strengths">
+    <div class="card st rv"><div class="ico">🌱</div><h3 data-i="s1.h"></h3><p data-i="s1.p"></p></div>
+    <div class="card st rv"><div class="ico">🧭</div><h3 data-i="s2.h"></h3><p data-i="s2.p"></p></div>
+    <div class="card st empty rv"><p data-i="s3.p"></p></div>
+  </div>
+</div></section>
+
+<section class="s" id="exp"><div class="wrap">
+  <p class="kicker rv">EXPERIENCE</p>
+  <h2 class="title rv" data-i="exp.title"></h2>
+  <p class="sub rv" data-i="exp.sub"></p>
+  <div class="exp">
+    <article class="card case rv">
+      <div class="thumb"><span data-i="ph.img"></span></div>
+      <div>
+        <p class="meta" data-i="c1.meta"></p>
+        <h3 data-i="c1.h"></h3>
+        <p data-i="c1.p"></p>
+        <div class="roles"><span class="role" data-i="c1.r1"></span><span class="role" data-i="c1.r2"></span><span class="role" data-i="c1.r3"></span></div>
+        <div class="flow">
+          <div><b data-i="f.prob"></b><span data-i="c1.prob"></span></div>
+          <div><b data-i="f.sol"></b><span data-i="c1.sol"></span></div>
+          <div><b data-i="f.res"></b><span data-i="c1.res"></span></div>
+        </div>
+      </div>
+    </article>
+    <article class="card case rv">
+      <div class="thumb"><span data-i="ph.img"></span></div>
+      <div>
+        <p class="meta" data-i="c2.meta"></p>
+        <h3 data-i="c2.h"></h3>
+        <p data-i="c2.p"></p>
+        <div class="roles"><span class="role" data-i="c2.r1"></span><span class="role" data-i="c2.r2"></span><span class="role" data-i="c2.r3"></span></div>
+        <div class="flow">
+          <div style="grid-column:1/-1"><b data-i="f.res"></b><span data-i="c2.res"></span></div>
+        </div>
+      </div>
+    </article>
+    <div class="edu">
+      <div class="card rv"><p class="meta" data-i="e1.meta"></p><h3>Lomonosov School #3</h3><p data-i="e1.p"></p></div>
+      <div class="card rv"><p class="meta" data-i="e2.meta"></p><h3 data-i="e2.h"></h3><p data-i="e2.p"></p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="s" id="skills"><div class="wrap">
+  <p class="kicker rv">SKILLS</p>
+  <h2 class="title rv" data-i="sk.title"></h2>
+  <div class="skills-grid">
+    <div class="card rv">
+      <h3 data-i="sk.lang"></h3><br>
+      <div class="lng"><div class="lng-top"><b data-i="l.ru"></b><span data-i="l.ru.lv"></span></div><div class="bar"><i data-w="100"></i></div></div>
+      <div class="lng"><div class="lng-top"><b data-i="l.ko"></b><span>TOPIK 4급 · 183</span></div><div class="bar"><i data-w="66"></i></div><p class="goal" data-i="l.ko.goal"></p></div>
+      <div class="lng"><div class="lng-top"><b data-i="l.en"></b><span>B1–B2</span></div><div class="bar"><i data-w="60"></i></div></div>
+      <p class="note" data-i="l.note"></p>
+    </div>
+    <div class="card rv">
+      <h3 data-i="sk.abil"></h3>
+      <ul class="sk">
+        <li data-i="k1"></li><li data-i="k2"></li><li data-i="k3"></li>
+        <li data-i="k4"></li><li data-i="k5"></li><li data-i="k6"></li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="s" id="contact"><div class="wrap">
+  <div class="contact rv">
+    <div class="blob b1"></div><div class="blob b2"></div>
+    <h2 class="title" data-i="ct.title"></h2>
+    <p class="sub" data-i="ct.sub"></p>
+    <a class="btn" href="mailto:knstysp2257@gmail.com">✉ knstysp2257@gmail.com</a>
+    <p class="loc" data-i="ct.loc"></p>
+  </div>
+</div></section>
+</main>
+<footer>© 2026 Yessipchuk Konstantin</footer>
+
+<script>
+const T={
+ko:{proto:"🧪 프로토타입 — 디자인과 구성을 확인하기 위한 시안입니다",logo:"콘스탄틴",
+"nav.about":"소개","nav.exp":"경험","nav.skills":"역량","nav.contact":"연락",
+"hero.hi":"안녕하세요, 저는","hero.name":"예십추크 콘스탄틴입니다","hero.word":"✦ 다면적인 사람",
+"hero.desc":"새로운 환경에 빠르게 적응하고, 맡은 일은 스스로 계획해 끝까지 해내는 경영학도 지망생입니다.",
+"chip.kz":"🇰🇿 카자흐스탄 출신","chip.loc":"📍 안산 거주","chip.major":"🎓 경영학과 지망","chip.topik":"🇰🇷 TOPIK 4급",
+"cta.exp":"경험 보기 →","cta.contact":"연락하기","ph.photo":"사진 예시","ph.img":"이미지 예시",
+"about.title":"저는 이런 사람입니다",
+"about.p1":"2007년 카자흐스탄에서 태어났습니다. Lomonosov School #3에서 오랫동안 생물과 화학을 공부했고, 지금은 여러 언어를 배우는 것을 즐깁니다.",
+"about.p2":"현재 한국 안산에 살며 안산시글로벌청소년센터에서 한국어를 공부하고 있습니다. 앞으로도 한국에서 배우고 일하며 살아갈 계획입니다.",
+"why.h":"왜 경영학인가요?","why.p":"여러 번의 진로 적성 검사에서 가장 잘 맞는 분야는 언제나 '경영'이었습니다. 그래서 경영학과 진학을 준비하고 있습니다.",
+"s1.h":"적응력","s1.p":"새로운 환경에서도 빠르게 적응합니다. 카자흐스탄에서 한국으로 와 새로운 언어와 문화 속에서 공부와 일을 함께 하고 있습니다.",
+"s2.h":"자립심","s2.p":"스스로 계획하고 끝까지 책임지는 사람입니다. 맡은 일은 직접 방법을 찾아 마무리합니다.",
+"s3.p":"세 번째 강점<br>추가 예정",
+"exp.title":"경험과 프로젝트","exp.sub":"한국과 카자흐스탄에서 쌓은 경험입니다. 무엇을 맡았고, 무엇을 배웠는지 정리했습니다.",
+"c1.meta":"안산시글로벌청소년센터 × 한양대학교 ERICA · 2026.04 – 2026.06","c1.h":"컬처 링크 (Culture Link)",
+"c1.p":"청년을 위한 '안산 맛집 지도' 팸플릿을 만든 팀 프로젝트입니다.",
+"c1.r1":"캐릭터 디자인","c1.r2":"인스타그램 홍보","c1.r3":"외국 음식점 정보 수집",
+"f.prob":"어려웠던 점","f.sol":"해결 방법","f.res":"배운 점",
+"c1.prob":"팀원마다 아이디어가 달라 팀워크가 쉽지 않았습니다.","c1.sol":"팀장님이 팀원 한 명 한 명의 아이디어를 듣고 하나로 모았습니다.","c1.res":"서로 다른 의견을 하나로 모으는 팀워크 방법을 배웠습니다.",
+"c2.meta":"이마트 고잔점 · 2025.12 – 현재","c2.h":"더벤티 (THE VENTI) 아르바이트","c2.p":"카페 매장에서 음료 제조부터 고객 응대까지 맡고 있습니다.",
+"c2.r1":"음료 제조","c2.r2":"물류 정리","c2.r3":"고객 응대",
+"c2.res":"고객을 제대로 응대하는 방법과 서비스 규칙, 많은 고객을 한 번에 처리하는 방법을 배웠습니다.",
+"e1.meta":"카자흐스탄 · 학교","e1.p":"생물과 화학을 오랫동안 깊이 공부했습니다.",
+"e2.meta":"대한민국 안산 · 현재","e2.h":"안산시글로벌청소년센터","e2.p":"한국어를 공부하며 대학 진학을 준비하고 있습니다.",
+"sk.title":"언어와 역량","sk.lang":"🌍 언어","sk.abil":"✨ 할 수 있는 일",
+"l.ru":"러시아어","l.ru.lv":"원어민","l.ko":"한국어","l.ko.goal":"🎯 다음 목표: TOPIK 5급","l.en":"영어",
+"l.note":"앞으로 더 많은 언어를 배울 계획입니다.",
+k1:"🎨 캐릭터 디자인",k2:"📱 SNS 홍보",k3:"🔍 정보 조사",k4:"🤝 고객 응대",k5:"👥 팀워크",k6:"📦 물류 정리",
+"ct.title":"함께 이야기 나눠요","ct.sub":"학교, 일, 프로젝트 — 어떤 이야기든 편하게 연락 주세요.","ct.loc":"📍 대한민국 안산"},
+ru:{proto:"🧪 Прототип — черновик для проверки дизайна и структуры",logo:"Константин",
+"nav.about":"Обо мне","nav.exp":"Опыт","nav.skills":"Навыки","nav.contact":"Контакты",
+"hero.hi":"Привет, я","hero.name":"Есипчук Константин","hero.word":"✦ Многогранный",
+"hero.desc":"Будущий студент факультета бизнеса. Быстро адаптируюсь к новому и сам довожу начатое до конца.",
+"chip.kz":"🇰🇿 Из Казахстана","chip.loc":"📍 Живу в Ансане","chip.major":"🎓 Поступаю на бизнес","chip.topik":"🇰🇷 TOPIK 4",
+"cta.exp":"Мой опыт →","cta.contact":"Связаться","ph.photo":"Пример фото","ph.img":"Пример изображения",
+"about.title":"Кто я",
+"about.p1":"Родился в 2007 году в Казахстане. Долго изучал биологию и химию в Lomonosov School #3, а сейчас с удовольствием учу языки.",
+"about.p2":"Сейчас живу в Ансане (Корея) и учу корейский в Ansan Global Youth Center. Планирую и дальше учиться, работать и жить в Корее.",
+"why.h":"Почему бизнес?","why.p":"Во многих профориентационных тестах самым подходящим для меня направлением всегда был бизнес. Поэтому я готовлюсь к поступлению на 경영학과.",
+"s1.h":"Адаптивность","s1.p":"Быстро осваиваюсь в новой среде. Переехал из Казахстана в Корею и совмещаю учёбу и работу в новой языковой и культурной среде.",
+"s2.h":"Самостоятельность","s2.p":"Сам планирую и отвечаю за результат до конца. Нахожу способ довести порученное дело до финала.",
+"s3.p":"Третья сильная сторона<br>скоро",
+"exp.title":"Опыт и проекты","exp.sub":"Опыт, полученный в Корее и Казахстане: за что я отвечал и чему научился.",
+"c1.meta":"Ansan Global Youth Center × Hanyang University ERICA · 04.2026 – 06.2026","c1.h":"Culture Link",
+"c1.p":"Командный проект: памфлет-карта лучших ресторанов Ансана для молодёжи.",
+"c1.r1":"Дизайн персонажа","c1.r2":"Продвижение в Instagram","c1.r3":"Сбор данных об иностранных ресторанах",
+"f.prob":"Сложность","f.sol":"Решение","f.res":"Чему научился",
+"c1.prob":"У каждого в команде были свои идеи — сработаться было непросто.","c1.sol":"Лидер команды выслушал идеи каждого и объединил их в одну.","c1.res":"Научился командной работе — как собрать разные мнения в одно решение.",
+"c2.meta":"E-mart Gojan · 12.2025 – сейчас","c2.h":"Подработка в THE VENTI","c2.p":"В кофейне отвечаю за всё — от приготовления напитков до работы с гостями.",
+"c2.r1":"Приготовление напитков","c2.r2":"Логистика и склад","c2.r3":"Обслуживание клиентов",
+"c2.res":"Научился правильно обслуживать клиентов, соблюдать стандарты сервиса и справляться с большим потоком гостей.",
+"e1.meta":"Казахстан · школа","e1.p":"Долго и углублённо изучал биологию и химию.",
+"e2.meta":"Ансан, Корея · сейчас","e2.h":"Ansan Global Youth Center","e2.p":"Учу корейский и готовлюсь к поступлению в университет.",
+"sk.title":"Языки и навыки","sk.lang":"🌍 Языки","sk.abil":"✨ Что я умею",
+"l.ru":"Русский","l.ru.lv":"Родной","l.ko":"Корейский","l.ko.goal":"🎯 Следующая цель: TOPIK 5","l.en":"Английский",
+"l.note":"Планирую выучить ещё несколько языков.",
+k1:"🎨 Дизайн персонажей",k2:"📱 SMM-продвижение",k3:"🔍 Сбор информации",k4:"🤝 Работа с клиентами",k5:"👥 Командная работа",k6:"📦 Логистика",
+"ct.title":"Давайте пообщаемся","ct.sub":"Учёба, работа, проекты — пишите по любому вопросу.","ct.loc":"📍 Ансан, Южная Корея"},
+en:{proto:"🧪 Prototype — a draft to review design and structure",logo:"Konstantin",
+"nav.about":"About","nav.exp":"Experience","nav.skills":"Skills","nav.contact":"Contact",
+"hero.hi":"Hi, I'm","hero.name":"Konstantin Yessipchuk","hero.word":"✦ Multifaceted",
+"hero.desc":"An aspiring business student who adapts quickly to new environments and sees every plan through to the end.",
+"chip.kz":"🇰🇿 From Kazakhstan","chip.loc":"📍 Based in Ansan","chip.major":"🎓 Future business major","chip.topik":"🇰🇷 TOPIK Level 4",
+"cta.exp":"See my experience →","cta.contact":"Get in touch","ph.photo":"Photo placeholder","ph.img":"Image placeholder",
+"about.title":"Who I am",
+"about.p1":"Born in 2007 in Kazakhstan. I studied biology and chemistry for many years at Lomonosov School #3, and today I love learning languages.",
+"about.p2":"I now live in Ansan, Korea, studying Korean at the Ansan Global Youth Center. I plan to keep studying, working and living in Korea.",
+"why.h":"Why business?","why.p":"Across many career-aptitude tests, business always came out as my best fit. That's why I'm preparing to study Business Administration.",
+"s1.h":"Adaptability","s1.p":"I settle into new environments fast. I moved from Kazakhstan to Korea and now balance study and work in a new language and culture.",
+"s2.h":"Self-reliance","s2.p":"I plan on my own and take responsibility to the very end. Whatever I'm given, I find a way to finish it.",
+"s3.p":"Third strength<br>coming soon",
+"exp.title":"Experience & Projects","exp.sub":"What I've done in Korea and Kazakhstan — what I was responsible for and what I learned.",
+"c1.meta":"Ansan Global Youth Center × Hanyang University ERICA · Apr – Jun 2026","c1.h":"Culture Link",
+"c1.p":"A team project creating an 'Ansan Food Map' pamphlet for young people.",
+"c1.r1":"Character design","c1.r2":"Instagram promotion","c1.r3":"Research on foreign restaurants",
+"f.prob":"Challenge","f.sol":"Solution","f.res":"What I learned",
+"c1.prob":"Everyone had different ideas, so teamwork was not easy.","c1.sol":"Our team leader listened to each member's ideas and merged them into one.","c1.res":"How to work as a team — bringing different opinions together into one plan.",
+"c2.meta":"E-mart Gojan · Dec 2025 – present","c2.h":"Part-time at THE VENTI","c2.p":"At a café, I handle everything from making drinks to serving customers.",
+"c2.r1":"Drink preparation","c2.r2":"Stock & logistics","c2.r3":"Customer service",
+"c2.res":"How to serve customers properly, follow service standards, and handle a large number of customers at once.",
+"e1.meta":"Kazakhstan · School","e1.p":"Studied biology and chemistry in depth for many years.",
+"e2.meta":"Ansan, Korea · Now","e2.h":"Ansan Global Youth Center","e2.p":"Studying Korean and preparing for university.",
+"sk.title":"Languages & Skills","sk.lang":"🌍 Languages","sk.abil":"✨ What I can do",
+"l.ru":"Russian","l.ru.lv":"Native","l.ko":"Korean","l.ko.goal":"🎯 Next goal: TOPIK Level 5","l.en":"English",
+"l.note":"I plan to learn even more languages.",
+k1:"🎨 Character design",k2:"📱 Social media promotion",k3:"🔍 Research",k4:"🤝 Customer service",k5:"👥 Teamwork",k6:"📦 Logistics",
+"ct.title":"Let's talk","ct.sub":"Study, work or projects — feel free to reach out about anything.","ct.loc":"📍 Ansan, South Korea"}};
+
+function setLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i]').forEach(el=>{const v=T[l][el.dataset.i];if(v!==undefined)el.innerHTML=v});
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+let saved='ko';try{saved=localStorage.getItem('lang')||'ko'}catch(e){}
+setLang(T[saved]?saved:'ko');
+
+document.querySelector('.theme').onclick=()=>{
+  const r=document.documentElement;
+  const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('theme',r.dataset.theme)}catch(e){}
+};
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.classList.add('in');e.target.querySelectorAll('.bar i').forEach(b=>b.style.width=b.dataset.w+'%');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
