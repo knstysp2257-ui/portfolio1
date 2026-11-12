@@ -308,4 +308,37 @@
   var skip = document.querySelector(".skip");
   var main = document.getElementById("main");
   if (skip && main) skip.addEventListener("click", function () { main.focus(); });
+
+  /* ---------- Motion: hero spotlight + 3D tilt ---------- */
+
+  var finePointer = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (!reduce && finePointer) {
+    var hero = document.querySelector(".hero");
+    if (hero) {
+      hero.addEventListener("pointermove", function (e) {
+        var r = hero.getBoundingClientRect();
+        hero.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        hero.style.setProperty("--my", (e.clientY - r.top) + "px");
+        hero.classList.add("lit");
+      });
+      hero.addEventListener("pointerleave", function () { hero.classList.remove("lit"); });
+    }
+
+    var tilts = document.querySelectorAll(".hero .photo, .st, .edu .card");
+    Array.prototype.forEach.call(tilts, function (el) {
+      var max = el.classList.contains("photo") ? 7 : 5;
+      el.classList.add("tilt");
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        el.classList.add("tilting");
+        el.style.transform = "perspective(900px) rotateX(" + (-y * max).toFixed(2) + "deg) rotateY(" + (x * max).toFixed(2) + "deg) translateY(-4px)";
+      });
+      el.addEventListener("pointerleave", function () {
+        el.classList.remove("tilting");
+        el.style.transform = "";
+      });
+    });
+  }
 })();
