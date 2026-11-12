@@ -87,6 +87,7 @@ window.I18N.en = {
   "sk.title": "Languages & Skills",
   "sk.lang": "Languages",
   "sk.abil": "What I can do",
+  "sk.tools": "Software I can use",
   "l.ru": "Russian",
   "l.ru.lv": "Native",
   "l.ko": "Korean",

@@ -87,6 +87,7 @@ window.I18N.ko = {
   "sk.title": "언어와 역량",
   "sk.lang": "언어",
   "sk.abil": "할 수 있는 일",
+  "sk.tools": "사용할 수 있는 프로그램",
   "l.ru": "러시아어",
   "l.ru.lv": "모국어",
   "l.ko": "한국어",

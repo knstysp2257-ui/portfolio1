@@ -186,6 +186,34 @@ button { font: inherit; color: inherit; }
 .note { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
 .sk { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; }
 .sk li { padding: 14px 0; border-bottom: 1px solid var(--line); font-weight: 500; }
+.tools-card { grid-column: 1 / -1; }
+.tool-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.tool {
+  display: flex; align-items: center; gap: 12px; padding: 14px;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--surface);
+  transition: transform .3s cubic-bezier(.2, .7, .1, 1), border-color .3s, box-shadow .3s;
+}
+.tool:hover { transform: translateY(-3px); border-color: var(--fg); box-shadow: var(--shadow); }
+.tool b { font-weight: 600; font-size: 15px; min-width: 0; }
+.tool-ic {
+  flex: none; width: 38px; height: 38px; border-radius: 9px; display: grid; place-items: center;
+  color: #fff; font-weight: 800; font-size: 17px; line-height: 1;
+}
+.tool-ic.canva { background: linear-gradient(135deg, #00c4cc, #7d2ae8); }
+.tool-ic.ppt { background: #c43e1c; }
+.tool-ic.msword { background: #185abd; }
+.tool-ic.hwp { background: #1f7bd8; font-size: 16px; }
+.tool-logo { flex: none; width: 38px; height: 38px; object-fit: contain; }
+.tool-ic.xls { background: #107c41; }
+.js .tools-card.rv .tool { opacity: 0; transform: translateY(14px); transition: opacity .5s, transform .6s cubic-bezier(.2, .7, .1, 1), border-color .3s, box-shadow .3s; }
+.js .tools-card.rv.in .tool { opacity: 1; transform: none; }
+.js .tools-card.rv.in .tool:nth-child(2) { transition-delay: .07s; }
+.js .tools-card.rv.in .tool:nth-child(3) { transition-delay: .14s; }
+.js .tools-card.rv.in .tool:nth-child(4) { transition-delay: .21s; }
+.js .tools-card.rv.in .tool:nth-child(5) { transition-delay: .28s; }
+.js .tools-card.rv.in .tool:hover { transform: translateY(-3px); transition-delay: 0s; }
+@media (max-width: 860px) { .tool-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .tool-list { grid-template-columns: 1fr 1fr; } .tool { padding: 12px; gap: 10px; } .tool b { font-size: 14px; } }
 
 /* ---------- Contact ---------- */
 .contact {
@@ -602,6 +630,7 @@ body {
   .js .case.rv .thumb { clip-path: none; }
   .js .case.rv .thumb img, .js .gallery.rv figure, .js .chips.rv li { opacity: 1; transform: none; }
   .js .kicker.rv::after { width: 40px; }
+  .js .tools-card.rv .tool { opacity: 1; transform: none; }
 }
 
 /* No-JS fallback: show language bars at their level */
