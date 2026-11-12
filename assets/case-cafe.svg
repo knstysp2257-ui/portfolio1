@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="cbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe7a3"/>
+      <stop offset="1" stop-color="#ffb86b"/>
+    </linearGradient>
+    <linearGradient id="latte" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8c39e"/>
+      <stop offset=".55" stop-color="#b9824f"/>
+      <stop offset="1" stop-color="#6e4325"/>
+    </linearGradient>
+    <linearGradient id="ade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd6e8"/>
+      <stop offset="1" stop-color="#ff6f9c"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#cbg)"/>
+  <circle cx="500" cy="100" r="160" fill="#ffffff" opacity=".25"/>
+  <circle cx="80" cy="520" r="150" fill="#ff8f4d" opacity=".18"/>
+
+  <!-- counter -->
+  <rect x="0" y="458" width="600" height="142" fill="#7a4a2a"/>
+  <rect x="0" y="448" width="600" height="18" fill="#9b6238"/>
+
+  <!-- big iced latte -->
+  <path d="M282 92l-14 96" stroke="#2b1d14" stroke-width="12" stroke-linecap="round"/>
+  <rect x="200" y="176" width="150" height="26" rx="13" fill="#fffaf2"/>
+  <path d="M208 202h134l-16 252h-102z" fill="#ffffff" opacity=".6"/>
+  <path d="M214 250h122l-12 200h-98z" fill="url(#latte)"/>
+  <rect x="232" y="262" width="34" height="34" rx="8" fill="#ffffff" opacity=".6" transform="rotate(-12 249 279)"/>
+  <rect x="280" y="276" width="30" height="30" rx="8" fill="#ffffff" opacity=".5" transform="rotate(14 295 291)"/>
+  <rect x="216" y="330" width="118" height="44" rx="8" fill="#2b1d14"/>
+  <path d="M262 352c0-10 8-14 13-14s13 4 13 14-13 12-13 12-13-2-13-12z" fill="#ffd166"/>
+
+  <!-- pink ade -->
+  <path d="M408 196l-8 70" stroke="#2b1d14" stroke-width="10" stroke-linecap="round"/>
+  <rect x="356" y="258" width="104" height="20" rx="10" fill="#fffaf2"/>
+  <path d="M362 278h92l-12 176h-68z" fill="#ffffff" opacity=".6"/>
+  <path d="M367 310h82l-9 140h-64z" fill="url(#ade)"/>
+  <circle cx="392" cy="336" r="11" fill="#ffffff" opacity=".55"/>
+  <circle cx="420" cy="360" r="8" fill="#ffffff" opacity=".45"/>
+  <path d="M440 302c10-14 26-14 30 0-10 10-20 8-30 0z" fill="#5cc36a"/>
+
+  <!-- hot cup -->
+  <path d="M128 346c-10-14 10-22 0-38M152 346c-10-14 10-22 0-38" stroke="#ffffff" stroke-width="6" stroke-linecap="round" fill="none" opacity=".8"/>
+  <path d="M100 360h82l-8 92h-66z" fill="#fffaf2"/>
+  <path d="M182 378c22 0 22 34 0 34" stroke="#fffaf2" stroke-width="10" fill="none"/>
+  <rect x="104" y="388" width="74" height="22" fill="#ff8f4d"/>
+
+  <!-- beans & sparkles -->
+  <g fill="#6e4325">
+    <ellipse cx="120" cy="500" rx="16" ry="11" transform="rotate(-20 120 500)"/>
+    <ellipse cx="160" cy="520" rx="16" ry="11" transform="rotate(25 160 520)"/>
+    <ellipse cx="480" cy="510" rx="16" ry="11" transform="rotate(-10 480 510)"/>
+  </g>
+  <g stroke="#3e2617" stroke-width="3" stroke-linecap="round">
+    <path d="M112 506c6-6 10-6 16-12"/><path d="M152 514c6 4 10 6 16 12"/><path d="M472 514c6-4 10-4 16-8"/>
+  </g>
+  <path d="M470 150l6 14 14 6-14 6-6 14-6-14-14-6 14-6z" fill="#ffffff"/>
+  <path d="M130 200l5 11 11 5-11 5-5 11-5-11-11-5 11-5z" fill="#ffffff" opacity=".9"/>
+</svg>

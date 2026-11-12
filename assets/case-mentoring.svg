@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="mbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1d1b3a"/>
+      <stop offset="1" stop-color="#3b2f86"/>
+    </linearGradient>
+    <linearGradient id="mscr" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#14132a"/>
+      <stop offset="1" stop-color="#22204a"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#mbg)"/>
+  <circle cx="90" cy="110" r="150" fill="#7c4dff" opacity=".18"/>
+  <circle cx="520" cy="520" r="170" fill="#7cc6ff" opacity=".12"/>
+  <g fill="#ffffff" opacity=".08">
+    <circle cx="120" cy="420" r="3"/><circle cx="160" cy="460" r="3"/><circle cx="480" cy="140" r="3"/>
+    <circle cx="510" cy="180" r="3"/><circle cx="440" cy="110" r="3"/>
+  </g>
+
+  <!-- laptop -->
+  <rect x="150" y="190" width="300" height="196" rx="14" fill="#e9e6ff"/>
+  <rect x="162" y="202" width="276" height="172" rx="8" fill="url(#mscr)"/>
+  <g stroke-linecap="round" stroke-width="9">
+    <path d="M184 232h40" stroke="#7cc6ff"/><path d="M236 232h70" stroke="#b9a7f5"/>
+    <path d="M204 258h56" stroke="#ffd166"/><path d="M272 258h90" stroke="#e9e6ff" opacity=".6"/>
+    <path d="M204 284h110" stroke="#7cc6ff"/>
+    <path d="M224 310h48" stroke="#b9a7f5"/><path d="M284 310h60" stroke="#ffd166"/>
+    <path d="M204 336h76" stroke="#e9e6ff" opacity=".6"/>
+    <path d="M184 360h30" stroke="#7cc6ff"/>
+  </g>
+  <rect x="290" y="350" width="12" height="20" rx="2" fill="#ffffff"/>
+  <path d="M118 386h364l-18 26H136z" fill="#c9c3f5"/>
+  <rect x="268" y="390" width="64" height="8" rx="4" fill="#9e95e6"/>
+
+  <!-- AI chat bubble -->
+  <g transform="translate(378 112)">
+    <rect width="120" height="74" rx="22" fill="#7c4dff"/>
+    <path d="M28 70l-8 26 30-24z" fill="#7c4dff"/>
+    <text x="60" y="49" text-anchor="middle" font-family="Pretendard, 'Noto Sans KR', Arial, sans-serif" font-size="30" font-weight="800" fill="#ffffff">AI</text>
+    <path d="M104 6l4 9 9 4-9 4-4 9-4-9-9-4 9-4z" fill="#ffd166"/>
+  </g>
+
+  <!-- helper bubble -->
+  <g transform="translate(98 118)">
+    <rect width="104" height="60" rx="20" fill="#ffffff"/>
+    <path d="M70 56l14 24 4-26z" fill="#ffffff"/>
+    <circle cx="32" cy="30" r="7" fill="#3b2f86"/><circle cx="52" cy="30" r="7" fill="#3b2f86"/><circle cx="72" cy="30" r="7" fill="#3b2f86"/>
+  </g>
+
+  <!-- people -->
+  <g transform="translate(300 515) scale(.82) translate(-300 -515) translate(0 -38)">
+    <circle cx="210" cy="470" r="30" fill="#ffd166"/>
+    <path d="M150 560c0-38 27-60 60-60s60 22 60 60z" fill="#7cc6ff"/>
+    <circle cx="390" cy="470" r="30" fill="#f4a3c6"/>
+    <path d="M330 560c0-38 27-60 60-60s60 22 60 60z" fill="#b9a7f5"/>
+    <path d="M300 456l5 11 11 5-11 5-5 11-5-11-11-5 11-5z" fill="#ffffff"/>
+  </g>
+</svg>

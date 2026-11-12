@@ -167,14 +167,13 @@ button { font: inherit; color: inherit; }
 .gallery {
   display: grid; gap: 16px; margin-top: 44px;
   grid-template-columns: 2fr 1fr 1fr;
-  grid-template-areas: "a b c" "a d d";
+  grid-template-areas: "a b c";
 }
 .gallery figure { position: relative; overflow: hidden; border-radius: var(--r); background: var(--soft); min-height: 250px; }
-.gallery figure:nth-child(1) { grid-area: a; min-height: 540px; }
+.gallery figure:nth-child(1) { grid-area: a; min-height: 480px; }
 .gallery figure:nth-child(2) { grid-area: b; }
 .gallery figure:nth-child(3) { grid-area: c; }
-.gallery figure:nth-child(4) { grid-area: d; }
-.gallery img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.gallery img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
 /* ---------- Skills ---------- */
 .skills-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; margin-top: 44px; }
@@ -431,6 +430,18 @@ body {
 .case .acc summary { font-size: 15px; }
 .case .acc .flow { border-top: 0; }
 .case .acc .flow > div:last-child { border-bottom: 0; }
+.acc-link {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px 0; font-size: 15px; font-weight: 600; color: inherit; text-decoration: none;
+}
+.acc-link .go {
+  flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
+  border: 1px solid var(--line); font-size: 15px; line-height: 1;
+  transition: background-color .3s, border-color .3s, color .3s, transform .3s;
+}
+.acc-link:hover .go, .acc-link:focus-visible .go { background: var(--fg); border-color: var(--fg); color: var(--bg); transform: translateX(3px); }
+.acc-link:focus-visible { outline-offset: 4px; }
+.acc-link.in-flow { border-top: 1px solid var(--line); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
@@ -447,15 +458,11 @@ body {
   .photo { order: -1; max-width: none; justify-self: stretch; aspect-ratio: 4 / 4.4; }
   .strengths { grid-template-columns: 1fr; }
   .thumb { min-height: 0; aspect-ratio: 4 / 3; }
-  .gallery { grid-template-columns: 1fr 1fr; grid-template-areas: "a a" "b c" "d d"; }
-  .gallery figure { min-height: 0; aspect-ratio: 1; }
+  .gallery { grid-template-columns: 1fr 1fr; grid-template-areas: "a a" "b c"; }
+  .gallery figure { min-height: 0; aspect-ratio: 3 / 4; }
   .gallery figure:nth-child(1) { min-height: 0; aspect-ratio: 4 / 3; }
-  .gallery figure:nth-child(4) { aspect-ratio: 2 / 1; }
 }
 @media (max-width: 860px) {
-  .stats { grid-template-columns: 1fr 1fr; }
-  .stat, .stat + .stat { padding: 20px 16px 20px 0; border-left: 0; border-bottom: 1px solid var(--line); }
-  .stat:nth-child(even) { padding-left: 16px; border-left: 1px solid var(--line); }
   .lightbox { padding: 72px 12px 88px; }
   .lb-img { max-height: calc(100vh - 220px); }
   .lb-prev, .lb-next { top: auto; bottom: 20px; margin-top: 0; }
@@ -474,6 +481,32 @@ body {
   .lang button { padding: 6px 8px; }
   .flow > div, :lang(ru) .flow > div, :lang(en) .flow > div { grid-template-columns: 1fr; gap: 2px; }
   .sk { grid-template-columns: 1fr; }
+}
+/* ---------- Phone polish ---------- */
+@media (max-width: 860px) {
+  .s { padding: 64px 0; }
+  .hero { padding: 36px 0 52px; }
+  .hero-grid { gap: 32px; }
+  .photo { order: 0; aspect-ratio: 1 / 1; max-width: 420px; justify-self: start; }
+  .links a { padding: 10px 0; }
+  .exp { margin-top: 32px; gap: 20px; }
+  .gallery { margin-top: 32px; gap: 10px; }
+}
+@media (max-width: 480px) {
+  .s { padding: 52px 0; }
+  .card.case { padding: 0; }
+  .case-body { padding: 22px 20px 8px; }
+  .case h3 { font-size: 21px; }
+  .meta { font-size: 13px; }
+  .ctas { display: flex; gap: 10px; }
+  .ctas .btn { flex: 1 1 auto; justify-content: center; text-align: center; white-space: nowrap; }
+  .mail-row { flex-direction: column; align-items: stretch; }
+  .btn.mail { font-size: 15px; padding-left: 14px; padding-right: 14px; }
+  .contact { padding-left: 20px; padding-right: 20px; }
+}
+@media (max-width: 360px) {
+  .nav .logo span { display: none; }
+  .lang button { padding: 6px 7px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
