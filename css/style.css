@@ -416,6 +416,9 @@ body {
 .why, .contact { position: relative; isolation: isolate; overflow: hidden; background: var(--deep); border-color: transparent; color: #f3f4f8; }
 .why::before, .contact::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: var(--grain); opacity: .07; pointer-events: none; }
 .why h3 { color: #aeb6ff; }
+/* Korean and English texts are shorter — larger type fills the card */
+:lang(ko) .why p, :lang(en) .why p { font-size: clamp(19px, 2.4vw, 24px); line-height: 1.55; }
+:lang(ko) .why h3, :lang(en) .why h3 { font-size: 14px; }
 .contact .title { color: #fff; font-size: clamp(30px, 4.6vw, 52px); }
 .contact .sub, .contact .loc { color: rgba(243, 244, 248, .68); }
 .contact .btn.mail { background: #fff; color: #0b0c14; }
