@@ -32,6 +32,7 @@ window.I18N.en = {
   "about.p2": "I now live in Ansan, Korea, where I study Korean at the Ansan Global Youth Center. I plan to keep studying, working and living in Korea.",
   "why.h": "Why business?",
   "why.p": "I have taken many career-aptitude tests, and business has always come out as my best fit. That is why I am preparing to study Business Administration.",
+  "why.p2": "I believe the business school is the best fit for me. I want to study business systematically at university and keep going deeper into this field, building real expertise.",
   "s1.h": "Adaptability",
   "s1.p": "I settle into new environments quickly. I moved from Kazakhstan to Korea and now balance study and work in a new language and culture.",
   "s2.h": "Self-reliance",
