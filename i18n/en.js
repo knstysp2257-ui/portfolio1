@@ -60,7 +60,7 @@ window.I18N.en = {
   "c2.r1": "Drink preparation",
   "c2.r2": "Stock & logistics",
   "c2.r3": "Customer service",
-  "c2.res": "How to serve customers properly, follow service standards, and handle many customers at once.",
+  "c2.res": "How to greet every customer warmly and follow the store's service standards — and how to stay calm in the rush, handling orders quickly and accurately.",
   "c2.link": "See THE VENTI menu",
   "c3.meta": "Kevin-ssaem AI Coding Academy · Nov 2 – Nov 13, 2026",
   "c3.h": "AI coding mentoring (2 weeks)",
